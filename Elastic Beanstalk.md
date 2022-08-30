@@ -14,5 +14,22 @@
 	- Monitoring (Cloudwatch, SNS)
 	- In-Place and Blue/Green deployment methodologies
 	- Security (Rotates passwords)
-	- Can run Dockerized environments.
-- 
+	- Can run Dockerized environments
+
+## Web Vs Worker Environment
+- **Web** application uses the Web Environment and there are two types of Web Environment
+	- **Load Balanced Env**
+		- Uses ASG and set to scale
+		- Uses an ELB
+		- Designed to scale
+	- **Single Instance Environment**
+		- Still uses an ASG but Desired Capacity is set to 1, to ensure the server is always running
+		- No ELB to save cost
+		- Public IP address has to be used to route traffic to server
+
+- **Worker** application uses the Worker Environment
+	- It creates the following:
+		- ASG
+		- SQS queue
+		- Installs Sqsd daemon on the EC2 instances
+		- Creates CloudWatch Alarm to dynamically scale instances based on health
