@@ -69,4 +69,77 @@
 4) Rolling with Additional Batch's ensure our capacity is never reduced. This is important for applications where a reduction in capacity could cause availability issues for users.
 
 ### Immutable
-1) 
+1) It creates a new ASG group with EC2 instances
+2) It then delpoyes the updated version of the app on the new EC2 instances
+3) It then point the ELB to the new ASG and deletes the old ASG which will terminate the old EC2 instances.
+
+- **The safest way to deploy for critical applications**
+- **In case of failure**, you just terminate the new instances since the existing instances still remain
+
+
+### Blue/ Green Deployment
+- In-Place and Blue/Green Deployment **are not definitive in definition** and the **_context_** can change th6e scope of what they mean 
+| | | |
+|---|---|---|
+|In-Place could mean within the scope of Elastic Beanstalk Env | All the deployment policies provided by EB could be considered In-Place since they are within the scope of a singel EB environment | 1) All at once 2) Rolling 3) Rolling with additional batch 4) Immutable ||
+| In-Place could mean within the scope of the same server (not replacing the server) | Deployment policies which do not invovle the server being replaced | 1) All at once 2) Rolling |
+| In-Place could mean within the scope of an uninterrupted server | Traffic is never routed away from the server (taken-of-service). Implements Zero-downtime, deploys where Blue/Green occurs on the server | EB can't do this. Capistrano + Ruby on Rails + Unicorn is famous case of this method of deployment |
+
+
+![EB-In-Place-VS-Blue-Green-Dep](pics/EB-In-Place-VS-Blue-Green-Dep.png)
+
+## EB Configuration Files
+- **.ebextensions** is a hidden **folder** called at the root of your project which contains the config files.
+-  .config is the extension for the config files which need to be stored in .ebextensions
+
+- Configuration files can config:
+	- Option settings
+	- Linux / Windows server configuration
+	- Custom resources
+
+## Environment Manifest
+- The Environment manifest is a file called **env.yml** which is stored at the root of your project.
+
+
+## EB Linux Server Configuration
+- **Packages** - Download and install prepackaged applications and components
+- **Users** - Create Linux users
+- **Commands** - Execute commands on the EC2 instance before app is setup
+- **Container Commands** - Execute commands that affect your application source code
+- **Groups** - Create Linux groups and to assign group IDs
+- **Services** - Defince which services should be started or stopped when the instance is launched
+
+
+## EB CLI
+
+| The CLI is hostend on GitHub | [AWS GitHub CLI](https://github.com/aws/aws-elastic-beanstalk-cli) |
+|---|---|
+| eb init | configure your project directory and the EB CLI |
+| eb create | create your first env |
+| eb status | see the current status of your env |
+| eb health | view health info about the instances and the state of your overall env (use --refresh to update every 10s)|
+| eb events | see a list of events output by EB |
+| eb logs | pull logs from an instance in your env |
+| eb open | open your env's website in a browser |
+| eb deploy | once the env is running, deploy an update |
+| eb config | take a look at the configuration options available for your running env |
+| eb terminante | delete the environment |
+
+## EB Custom Image
+- When you create an EB environment, you can specify an AMI to use instead of the standard EB AMI.
+- A custom AMI can **improve provisioning times** when intances are launched in your environment if you need to install a lot of software that isn't included in the standard AMIs
+
+## EB - Configuring RDS
+
+- A database can be added **inside** or **outside** your EB environment
+
+### Inside EB Env
+- Intended for general development envs
+- You create the databse within EB
+- When the EB Env is terminated the database will also be terminated
+
+### Outside EB Env
+- Intended for **production** envs
+- You create the database from RDS separate from EB
+- When the EB Env is terminated the database will remain
+
