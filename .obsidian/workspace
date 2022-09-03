@@ -9,11 +9,25 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Elastic Beanstalk.md",
+            "file": "ECS.md",
             "mode": "source",
             "source": false
           }
-        }
+        },
+        "group": "5010a0b63b1e2973"
+      },
+      {
+        "id": "512ac9c0cfed9b6f",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "ECS.md",
+            "mode": "preview",
+            "source": false
+          }
+        },
+        "group": "5010a0b63b1e2973"
       }
     ],
     "direction": "vertical"
@@ -77,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Elastic Beanstalk.md",
+                "file": "ECS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Elastic Beanstalk.md",
+                "file": "ECS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -117,7 +131,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Elastic Beanstalk.md"
+                "file": "ECS.md"
               }
             }
           }
@@ -130,6 +144,7 @@
   },
   "active": "39b519272935d28e",
   "lastOpenFiles": [
-    "Elastic Beanstalk.md"
+    "Elastic Beanstalk.md",
+    "ECS.md"
   ]
 }

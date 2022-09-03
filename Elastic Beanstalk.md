@@ -143,3 +143,19 @@
 - You create the database from RDS separate from EB
 - When the EB Env is terminated the database will remain
 
+
+
+## Cloud9 CLI Commands
+- npm i c9 -g
+- npm init -y
+- npm i express --save
+
+
+## CLI Security Group
+- curl -s http://169.254.169.254/latest/
+- curl -s http://169.254.169.254/latest/meta-data/mac
+- curl -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/<your_mac>/security-group-ids
+- aws ec2 authorize-security-group-ingress --group-id sg-092c52683ad678316 --port 8080 --protocol tcp --cidr 157.157.86.244/32
+- aws ec2 describe-security-groups --group-ids sg-092c52683ad678316 --output text --filters Name=ip-permission.to-port,Values=8080
+- curl -s http://169.254.169.254/latest/meta-data/public-ipv4
+- 
