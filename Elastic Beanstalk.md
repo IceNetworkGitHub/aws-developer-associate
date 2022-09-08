@@ -83,11 +83,12 @@
 
 ### Blue/ Green Deployment
 
-- In-Place and Blue/Green Deployment **are not definitive in definition** and the **_context_** can change th6e scope of what they mean
-| | | |
+- In-Place and Blue/Green Deployment **are not definitive in definition** and the **_context_** can change the scope of what they mean
+
+|  | | |
 |---|---|---|
-|In-Place could mean within the scope of Elastic Beanstalk Env | All the deployment policies provided by EB could be considered In-Place since they are within the scope of a singel EB environment | 1) All at once 2) Rolling 3) Rolling with additional batch 4) Immutable ||
-| In-Place could mean within the scope of the same server (not replacing the server) | Deployment policies which do not invovle the server being replaced | 1) All at once 2) Rolling |
+| In-Place could mean within the scope of Elastic Beanstalk Env | All the deployment policies provided by EB could be considered In-Place since they are within the scope of a singel EB environment | 1) All at once 2) Rolling 3) Rolling with additional batch 4) Immutable
+| In-Place could mean within the scope of the same server (not replacing the server) | Deployment policies which do not invovle the server being replaced | 1) All at once 2) Rolling
 | In-Place could mean within the scope of an uninterrupted server | Traffic is never routed away from the server (taken-of-service). Implements Zero-downtime, deploys where Blue/Green occurs on the server | EB can't do this. Capistrano + Ruby on Rails + Unicorn is famous case of this method of deployment |
 
 ![EB-In-Place-VS-Blue-Green-Dep](pics/EB-In-Place-VS-Blue-Green-Dep.png)
